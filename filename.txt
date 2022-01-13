@@ -1,0 +1,1173 @@
+import numpy as np
+np.pi
+import numpy as np
+np.cos(np.pi)
+import numpy as np
+np.cos(np.pi / 2)
+import numpy as np
+np.cos((np.pi/2))
+import numpy as np
+np.cos(((np.pi)/2))
+import numpy as np
+np.cos(np.degress(np.pi)/2))
+import numpy as np
+np.cos(np.degress(np.pi/2))
+import numpy as np
+np.cos(np.radians(np.pi/2))
+import numpy as np
+np.cos(np.radians(np.pi))
+import numpy as np
+np.cos(np.radians(np.pi))
+import numpy as np
+np.cos(np.pi)
+import numpy as np
+np.cos(np.pi / 2)
+import numpy as np
+np.cos(0)
+import numpy as np
+np.cos(90)
+import numpy as np
+np.cos(180)
+import numpy as np
+np.cos(np.radians(180))
+import numpy as np
+np.cos(np.radians(90))
+import numpy as np
+def determinarDF(x, y, theta Sx, Sy):
+    dF = 0
+    if theta >= 0 and theta < np.pi / 2:
+        dF = (Sy - y) / np.abs(np.cos(theta)) 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        dF = (Sx - x) / np.abs(np.sin(theta))
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        dF = y / np.abs(np.cos(theta)) 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        dF = x / np.abs(np.sin(theta))        
+    return dF
+
+def determinarDR(x, y, theta, Sx, Sy):
+    dR = 0
+    if theta >= 0 and theta < np.pi / 2:
+        dR = (Sx - x) / np.abs(np.cos(theta)) 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        dR = (Sx - x) / np.abs(np.sin(theta))
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        dR = x / np.abs(np.cos(theta)) 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        dR = (Sy - y) / np.abs(np.sin(theta))        
+    return dR
+
+def determinarDL(x, y, theta, Sx, Sy):
+    dL = 0
+    if theta >= 0 and theta < np.pi / 2:
+        dL = x / np.abs(np.cos(theta)) 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        dL = (Sy - y) / np.abs(np.sin(theta))
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        dL = (Sx - x) / np.abs(np.cos(theta)) 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        dL = y / np.abs(np.sin(theta))        
+    return dL
+
+    
+def determinarMatrizH(x, y, theta, Sx, Sy):
+    if theta >= 0 and theta < np.pi / 2:
+        H = np.matrix([[0, -1/np.abs(np.cos(theta)), 0, 0, ((Sy - y)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [-1/np.abs(np.cos(theta)), 0, 0, 0, ((Sx - x)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [-1/np.abs(np.cos(theta)), 0, 0, 0, ((x)*np.tan(theta)) / np.abs(np.cos(theta))]
+                     ])
+        return H 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        H = np.matrix([[-1/np.abs(np.sin(theta)), 0, 0, 0, (-(Sx - x)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, 1/np.abs(np.sin(theta)),  0, 0, (-(y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, -1/np.abs(np.sin(theta)), 0, 0, (-(Sy - y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))]
+                     ])
+        return H
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        H = np.matrix([[0, 1/np.abs(np.cos(theta)), 0, 0, ((y)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [1/np.abs(np.cos(theta)), 0, 0, 0, ((x)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [-1/np.abs(np.cos(theta)), 0, 0, 0, ((Sx - x)*np.tan(theta)) / np.abs(np.cos(theta))]
+                     ])
+        return H 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        H = np.matrix([[1/np.abs(np.sin(theta)), 0,   0, 0, (-(x)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, -1/np.abs(np.sin(theta)),  0, 0, (-(Sy - y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, -1/np.abs(np.sin(theta)), 0, 0, (-(y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))]
+                     ])
+        return H
+import numpy as np
+def determinarDF(x, y, theta, Sx, Sy):
+    dF = 0
+    if theta >= 0 and theta < np.pi / 2:
+        dF = (Sy - y) / np.abs(np.cos(theta)) 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        dF = (Sx - x) / np.abs(np.sin(theta))
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        dF = y / np.abs(np.cos(theta)) 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        dF = x / np.abs(np.sin(theta))        
+    return dF
+
+def determinarDR(x, y, theta, Sx, Sy):
+    dR = 0
+    if theta >= 0 and theta < np.pi / 2:
+        dR = (Sx - x) / np.abs(np.cos(theta)) 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        dR = (Sx - x) / np.abs(np.sin(theta))
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        dR = x / np.abs(np.cos(theta)) 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        dR = (Sy - y) / np.abs(np.sin(theta))        
+    return dR
+
+def determinarDL(x, y, theta, Sx, Sy):
+    dL = 0
+    if theta >= 0 and theta < np.pi / 2:
+        dL = x / np.abs(np.cos(theta)) 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        dL = (Sy - y) / np.abs(np.sin(theta))
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        dL = (Sx - x) / np.abs(np.cos(theta)) 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        dL = y / np.abs(np.sin(theta))        
+    return dL
+
+    
+def determinarMatrizH(x, y, theta, Sx, Sy):
+    if theta >= 0 and theta < np.pi / 2:
+        H = np.matrix([[0, -1/np.abs(np.cos(theta)), 0, 0, ((Sy - y)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [-1/np.abs(np.cos(theta)), 0, 0, 0, ((Sx - x)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [-1/np.abs(np.cos(theta)), 0, 0, 0, ((x)*np.tan(theta)) / np.abs(np.cos(theta))]
+                     ])
+        return H 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        H = np.matrix([[-1/np.abs(np.sin(theta)), 0, 0, 0, (-(Sx - x)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, 1/np.abs(np.sin(theta)),  0, 0, (-(y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, -1/np.abs(np.sin(theta)), 0, 0, (-(Sy - y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))]
+                     ])
+        return H
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        H = np.matrix([[0, 1/np.abs(np.cos(theta)), 0, 0, ((y)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [1/np.abs(np.cos(theta)), 0, 0, 0, ((x)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [-1/np.abs(np.cos(theta)), 0, 0, 0, ((Sx - x)*np.tan(theta)) / np.abs(np.cos(theta))]
+                     ])
+        return H 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        H = np.matrix([[1/np.abs(np.sin(theta)), 0,   0, 0, (-(x)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, -1/np.abs(np.sin(theta)),  0, 0, (-(Sy - y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, -1/np.abs(np.sin(theta)), 0, 0, (-(y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))]
+                     ])
+        return H
+def filtroDeKalman(posicao_anterior, deltaT, u_k, P, distancias_lidas):
+    posicao_anterior = np.matrix(posicao_anterior).T
+    distancias = np.matrix(distancias_lidas)
+    x_kmenos1, y_kmenos1, vx_kmenos1, vy_kmenos1, theta_kmenos1 = posicao_anterior[0], posicao_anterior[1], posicao_anterior[2], posicao_anterior[3], posicao_anterior[4] 
+    aceleracao_medida, velocidade_angular = u_k[0], u_k[1]
+    alpha = theta_kmenos1 + (deltaT*velocidade_angular) 
+    deltaX = (1/2 * (deltaT ** 2) * aceleracao_medida  + vx_kmenos1*deltaT) * np.cos(alpha)
+    deltaY = (1/2 * (deltaT ** 2) * aceleracao_medida + vy_kmenos1*deltaT) * np.sin(alpha)
+    deltaVx = aceleracao_medida * deltaT * np.cos(alpha)
+    deltaVy = aceleracao_medida * deltaT * np.sin(alpha)
+    deltaTheta = deltaT * velocidade_angular
+    posicao_predita = posicao_anterior + np.matrix([[deltaX],
+                                                    [deltaY],
+                                                    [deltaVx],
+                                                    [deltaVy],
+                                                    [deltaTheta]])
+    F_p = np.matrix([[1, 0, deltaT * np.cos(alpha), 0, ((-1/2 * (deltaT ** 2) * aceleracao_medida - vx_kmenos1 * deltaT) * np.sin(alpha))],
+                     [0, 1, 0, deltaT * np.sin(alpha), ((1/2 * (deltaT ** 2) * aceleracao_medida + vy_kmenos1 * deltaT) * np.cos(alpha))],
+                     [0, 0, 1, 0, (-1)*(aceleracao_medida * deltaT * np.sin(alpha))],
+                     [0, 0, 0, 1, (aceleracao_medida * deltaT * np.cos(alpha))],
+                     [0, 0, 0, 0, 1]])
+    
+    F_u = np.matrix([[1/2 * (deltaT ** 2) * np.cos(alpha), 
+                        ((-1/2 * (deltaT ** 3) * aceleracao_medida) - (vx_kmenos1 * (deltaT ** 2))) * np.sin(alpha)],
+                     [1/2 * (deltaT ** 2) * np.sin(alpha),
+                         ((1/2 * (deltaT ** 3) * aceleracao_medida) + (vy_kmenos1 * (deltaT ** 2))) * np.cos(alpha)],
+                     [deltaT * np.cos(alpha), (-1)*(aceleracao_medida * deltaT * np.sin(alpha))],
+                     [deltaT * np.sin(alpha), (aceleracao_medida * deltaT * np.cos(alpha))],
+                     [0, deltaT]])
+    
+    Q = np.matrix([[1, 0],
+                   [0, 1]])
+    
+    P_predito = F_p * P * F_p.T + F_u * Q * F_u.T
+
+    Sx, Sy = 1000, 1000
+    hDF = determinarDF(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    hDR = determinarDR(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    hDL = determinarDL(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    funcaoH = np.matrix([hDF, hDR, hDL])
+    Vk = distancias - funcaoH
+    H = determinarMatrizH(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    Rk = np.matrix([[1, 0, 0, 0, 0],
+                   [0, 1, 0, 0, 0],
+                   [0, 0, 1, 0, 0],
+                   [0, 0, 0, 1, 0],
+                   [0, 0, 0, 0, 1]])
+    Sk = H * P_predito * H.T + Rk
+    Kk = P_predito * H.T * Sk.I
+    posicao_atual = posicao_predita + Kk * Vk
+    P_atual = P_predito + Kk * Sk * Kk.T
+    return posicao_atual, P_atual
+P = np.matrix([[1, 0, 0, 0, 0], [0, 1, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 1, 0], [0, 0, 0, 0, 1]])
+filtroDeKalman([0, 0, 1, 1, 90], 100, [[0.1, 0.1], 0.3], P)
+
+# dF (x, y, theta) = {
+#     * 0 <= theta < pi/2:      |Yp - Sy| / |cos(theta)|
+#     * pi/2 <= theta < pi:     |Xp - Sx| / |sin(theta)|
+#     * pi <= theta < 3*pi/2:   Yp / |cos(theta)|
+#     * 3*pi/2 <= theta < 2*pi: Xp / |sin(theta)|  
+# }
+
+# dR (x, y, theta) = {
+#     * 0 <= theta < pi/2:      |Sx - Xp| / |cos(theta)
+#     * pi/2 <= theta < pi:     Yp / |sin(theta)|
+#     * pi <= theta < 3*pi/2:   Xp / |cos(theta)|
+#     * 3*pi/2 <= theta < 2*pi: |Sy - Yp| / |sin(theta)| 
+# }
+
+# dL (x, y, theta) = {
+#     * 0 <= theta < pi/2:      Xp / |cos(theta)
+#     * pi/2 <= theta < pi:     |Sy - Yp| / |sin(theta)|
+#     * pi <= theta < 3*pi/2:   |Sx - Xp| / |cos(theta)|
+#     * 3*pi/2 <= theta < 2*pi: Yp / |sin(theta)| 
+# }
+import numpy as np
+def determinarDF(x, y, theta, Sx, Sy):
+    dF = 0
+    if theta >= 0 and theta < np.pi / 2:
+        dF = (Sy - y) / np.abs(np.cos(theta)) 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        dF = (Sx - x) / np.abs(np.sin(theta))
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        dF = y / np.abs(np.cos(theta)) 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        dF = x / np.abs(np.sin(theta))        
+    return dF
+
+def determinarDR(x, y, theta, Sx, Sy):
+    dR = 0
+    if theta >= 0 and theta < np.pi / 2:
+        dR = (Sx - x) / np.abs(np.cos(theta)) 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        dR = (Sx - x) / np.abs(np.sin(theta))
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        dR = x / np.abs(np.cos(theta)) 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        dR = (Sy - y) / np.abs(np.sin(theta))        
+    return dR
+
+def determinarDL(x, y, theta, Sx, Sy):
+    dL = 0
+    if theta >= 0 and theta < np.pi / 2:
+        dL = x / np.abs(np.cos(theta)) 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        dL = (Sy - y) / np.abs(np.sin(theta))
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        dL = (Sx - x) / np.abs(np.cos(theta)) 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        dL = y / np.abs(np.sin(theta))        
+    return dL
+
+    
+def determinarMatrizH(x, y, theta, Sx, Sy):
+    if theta >= 0 and theta < np.pi / 2:
+        H = np.matrix([[0, -1/np.abs(np.cos(theta)), 0, 0, ((Sy - y)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [-1/np.abs(np.cos(theta)), 0, 0, 0, ((Sx - x)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [-1/np.abs(np.cos(theta)), 0, 0, 0, ((x)*np.tan(theta)) / np.abs(np.cos(theta))]
+                     ])
+        return H 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        H = np.matrix([[-1/np.abs(np.sin(theta)), 0, 0, 0, (-(Sx - x)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, 1/np.abs(np.sin(theta)),  0, 0, (-(y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, -1/np.abs(np.sin(theta)), 0, 0, (-(Sy - y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))]
+                     ])
+        return H
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        H = np.matrix([[0, 1/np.abs(np.cos(theta)), 0, 0, ((y)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [1/np.abs(np.cos(theta)), 0, 0, 0, ((x)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [-1/np.abs(np.cos(theta)), 0, 0, 0, ((Sx - x)*np.tan(theta)) / np.abs(np.cos(theta))]
+                     ])
+        return H 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        H = np.matrix([[1/np.abs(np.sin(theta)), 0,   0, 0, (-(x)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, -1/np.abs(np.sin(theta)),  0, 0, (-(Sy - y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, -1/np.abs(np.sin(theta)), 0, 0, (-(y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))]
+                     ])
+        return H
+def filtroDeKalman(posicao_anterior, deltaT, u_k, P, distancias_lidas):
+    posicao_anterior = np.matrix(posicao_anterior).T
+    distancias = np.matrix(distancias_lidas)
+    x_kmenos1, y_kmenos1, vx_kmenos1, vy_kmenos1, theta_kmenos1 = posicao_anterior[0], posicao_anterior[1], posicao_anterior[2], posicao_anterior[3], posicao_anterior[4] 
+    aceleracao_medida, velocidade_angular = u_k[0], u_k[1]
+    alpha = theta_kmenos1 + (deltaT*velocidade_angular) 
+    deltaX = (1/2 * (deltaT ** 2) * aceleracao_medida  + vx_kmenos1*deltaT) * np.cos(alpha)
+    deltaY = (1/2 * (deltaT ** 2) * aceleracao_medida + vy_kmenos1*deltaT) * np.sin(alpha)
+    deltaVx = aceleracao_medida * deltaT * np.cos(alpha)
+    deltaVy = aceleracao_medida * deltaT * np.sin(alpha)
+    deltaTheta = deltaT * velocidade_angular
+    posicao_predita = posicao_anterior + np.matrix([[deltaX],
+                                                    [deltaY],
+                                                    [deltaVx],
+                                                    [deltaVy],
+                                                    [deltaTheta]])
+    F_p = np.matrix([[1, 0, deltaT * np.cos(alpha), 0, ((-1/2 * (deltaT ** 2) * aceleracao_medida - vx_kmenos1 * deltaT) * np.sin(alpha))],
+                     [0, 1, 0, deltaT * np.sin(alpha), ((1/2 * (deltaT ** 2) * aceleracao_medida + vy_kmenos1 * deltaT) * np.cos(alpha))],
+                     [0, 0, 1, 0, (-1)*(aceleracao_medida * deltaT * np.sin(alpha))],
+                     [0, 0, 0, 1, (aceleracao_medida * deltaT * np.cos(alpha))],
+                     [0, 0, 0, 0, 1]])
+    
+    F_u = np.matrix([[1/2 * (deltaT ** 2) * np.cos(alpha), 
+                        ((-1/2 * (deltaT ** 3) * aceleracao_medida) - (vx_kmenos1 * (deltaT ** 2))) * np.sin(alpha)],
+                     [1/2 * (deltaT ** 2) * np.sin(alpha),
+                         ((1/2 * (deltaT ** 3) * aceleracao_medida) + (vy_kmenos1 * (deltaT ** 2))) * np.cos(alpha)],
+                     [deltaT * np.cos(alpha), (-1)*(aceleracao_medida * deltaT * np.sin(alpha))],
+                     [deltaT * np.sin(alpha), (aceleracao_medida * deltaT * np.cos(alpha))],
+                     [0, deltaT]])
+    
+    Q = np.matrix([[1, 0],
+                   [0, 1]])
+    
+    P_predito = F_p * P * F_p.T + F_u * Q * F_u.T
+
+    Sx, Sy = 1000, 1000
+    hDF = determinarDF(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    hDR = determinarDR(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    hDL = determinarDL(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    funcaoH = np.matrix([hDF, hDR, hDL])
+    Vk = distancias - funcaoH
+    H = determinarMatrizH(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    Rk = np.matrix([[1, 0, 0, 0, 0],
+                   [0, 1, 0, 0, 0],
+                   [0, 0, 1, 0, 0],
+                   [0, 0, 0, 1, 0],
+                   [0, 0, 0, 0, 1]])
+    Sk = H * P_predito * H.T + Rk
+    Kk = P_predito * H.T * Sk.I
+    posicao_atual = posicao_predita + Kk * Vk
+    P_atual = P_predito + Kk * Sk * Kk.T
+    return posicao_atual, P_atual
+P = np.matrix([[1, 0, 0, 0, 0], [0, 1, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 1, 0], [0, 0, 0, 0, 1]])
+filtroDeKalman([0, 0, 1, 1, 90], 100, [[0.1, 0.1], 0.3], P, [10, 10, 10])
+
+# dF (x, y, theta) = {
+#     * 0 <= theta < pi/2:      |Yp - Sy| / |cos(theta)|
+#     * pi/2 <= theta < pi:     |Xp - Sx| / |sin(theta)|
+#     * pi <= theta < 3*pi/2:   Yp / |cos(theta)|
+#     * 3*pi/2 <= theta < 2*pi: Xp / |sin(theta)|  
+# }
+
+# dR (x, y, theta) = {
+#     * 0 <= theta < pi/2:      |Sx - Xp| / |cos(theta)
+#     * pi/2 <= theta < pi:     Yp / |sin(theta)|
+#     * pi <= theta < 3*pi/2:   Xp / |cos(theta)|
+#     * 3*pi/2 <= theta < 2*pi: |Sy - Yp| / |sin(theta)| 
+# }
+
+# dL (x, y, theta) = {
+#     * 0 <= theta < pi/2:      Xp / |cos(theta)
+#     * pi/2 <= theta < pi:     |Sy - Yp| / |sin(theta)|
+#     * pi <= theta < 3*pi/2:   |Sx - Xp| / |cos(theta)|
+#     * 3*pi/2 <= theta < 2*pi: Yp / |sin(theta)| 
+# }
+P = np.matrix([[1, 0, 0, 0, 0], [0, 1, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 1, 0], [0, 0, 0, 0, 1]])
+filtroDeKalman([0, 0, 1, 1, 90], 100, [0.1, 0.3], P, [10, 10, 10])
+
+# dF (x, y, theta) = {
+#     * 0 <= theta < pi/2:      |Yp - Sy| / |cos(theta)|
+#     * pi/2 <= theta < pi:     |Xp - Sx| / |sin(theta)|
+#     * pi <= theta < 3*pi/2:   Yp / |cos(theta)|
+#     * 3*pi/2 <= theta < 2*pi: Xp / |sin(theta)|  
+# }
+
+# dR (x, y, theta) = {
+#     * 0 <= theta < pi/2:      |Sx - Xp| / |cos(theta)
+#     * pi/2 <= theta < pi:     Yp / |sin(theta)|
+#     * pi <= theta < 3*pi/2:   Xp / |cos(theta)|
+#     * 3*pi/2 <= theta < 2*pi: |Sy - Yp| / |sin(theta)| 
+# }
+
+# dL (x, y, theta) = {
+#     * 0 <= theta < pi/2:      Xp / |cos(theta)
+#     * pi/2 <= theta < pi:     |Sy - Yp| / |sin(theta)|
+#     * pi <= theta < 3*pi/2:   |Sx - Xp| / |cos(theta)|
+#     * 3*pi/2 <= theta < 2*pi: Yp / |sin(theta)| 
+# }
+import numpy as np
+def determinarDF(x, y, theta, Sx, Sy):
+    dF = 0
+    if theta >= 0 and theta < np.pi / 2:
+        dF = (Sy - y) / np.abs(np.cos(theta)) 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        dF = (Sx - x) / np.abs(np.sin(theta))
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        dF = y / np.abs(np.cos(theta)) 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        dF = x / np.abs(np.sin(theta))        
+    return dF
+
+def determinarDR(x, y, theta, Sx, Sy):
+    dR = 0
+    if theta >= 0 and theta < np.pi / 2:
+        dR = (Sx - x) / np.abs(np.cos(theta)) 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        dR = (Sx - x) / np.abs(np.sin(theta))
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        dR = x / np.abs(np.cos(theta)) 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        dR = (Sy - y) / np.abs(np.sin(theta))        
+    return dR
+
+def determinarDL(x, y, theta, Sx, Sy):
+    dL = 0
+    if theta >= 0 and theta < np.pi / 2:
+        dL = x / np.abs(np.cos(theta)) 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        dL = (Sy - y) / np.abs(np.sin(theta))
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        dL = (Sx - x) / np.abs(np.cos(theta)) 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        dL = y / np.abs(np.sin(theta))        
+    return dL
+
+    
+def determinarMatrizH(x, y, theta, Sx, Sy):
+    if theta >= 0 and theta < np.pi / 2:
+        H = np.matrix([[0, -1/np.abs(np.cos(theta)), 0, 0, ((Sy - y)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [-1/np.abs(np.cos(theta)), 0, 0, 0, ((Sx - x)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [-1/np.abs(np.cos(theta)), 0, 0, 0, ((x)*np.tan(theta)) / np.abs(np.cos(theta))]
+                     ])
+        return H 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        H = np.matrix([[-1/np.abs(np.sin(theta)), 0, 0, 0, (-(Sx - x)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, 1/np.abs(np.sin(theta)),  0, 0, (-(y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, -1/np.abs(np.sin(theta)), 0, 0, (-(Sy - y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))]
+                     ])
+        return H
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        H = np.matrix([[0, 1/np.abs(np.cos(theta)), 0, 0, ((y)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [1/np.abs(np.cos(theta)), 0, 0, 0, ((x)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [-1/np.abs(np.cos(theta)), 0, 0, 0, ((Sx - x)*np.tan(theta)) / np.abs(np.cos(theta))]
+                     ])
+        return H 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        H = np.matrix([[1/np.abs(np.sin(theta)), 0,   0, 0, (-(x)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, -1/np.abs(np.sin(theta)),  0, 0, (-(Sy - y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, -1/np.abs(np.sin(theta)), 0, 0, (-(y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))]
+                     ])
+        return H
+def filtroDeKalman(posicao_anterior, deltaT, u_k, P, distancias_lidas):
+    posicao_anterior = np.matrix(posicao_anterior).T
+    distancias = np.matrix(distancias_lidas)
+    x_kmenos1, y_kmenos1, vx_kmenos1, vy_kmenos1, theta_kmenos1 = posicao_anterior[0], posicao_anterior[1], posicao_anterior[2], posicao_anterior[3], posicao_anterior[4] 
+    aceleracao_medida, velocidade_angular = u_k[0], u_k[1]
+    alpha = theta_kmenos1 + (deltaT*velocidade_angular) 
+    deltaX = (1/2 * (deltaT ** 2) * aceleracao_medida  + vx_kmenos1*deltaT) * np.cos(alpha)
+    deltaY = (1/2 * (deltaT ** 2) * aceleracao_medida + vy_kmenos1*deltaT) * np.sin(alpha)
+    deltaVx = aceleracao_medida * deltaT * np.cos(alpha)
+    deltaVy = aceleracao_medida * deltaT * np.sin(alpha)
+    deltaTheta = deltaT * velocidade_angular
+    posicao_predita = posicao_anterior + np.matrix([[deltaX],
+                                                    [deltaY],
+                                                    [deltaVx],
+                                                    [deltaVy],
+                                                    [deltaTheta]])
+    F_p = np.matrix([[1, 0, deltaT * np.cos(alpha), 0, ((-1/2 * (deltaT ** 2) * aceleracao_medida - vx_kmenos1 * deltaT) * np.sin(alpha))],
+                     [0, 1, 0, deltaT * np.sin(alpha), ((1/2 * (deltaT ** 2) * aceleracao_medida + vy_kmenos1 * deltaT) * np.cos(alpha))],
+                     [0, 0, 1, 0, (-1)*(aceleracao_medida * deltaT * np.sin(alpha))],
+                     [0, 0, 0, 1, (aceleracao_medida * deltaT * np.cos(alpha))],
+                     [0, 0, 0, 0, 1]])
+    
+    F_u = np.matrix([[1/2 * (deltaT ** 2) * np.cos(alpha), 
+                        ((-1/2 * (deltaT ** 3) * aceleracao_medida) - (vx_kmenos1 * (deltaT ** 2))) * np.sin(alpha)],
+                     [1/2 * (deltaT ** 2) * np.sin(alpha),
+                         ((1/2 * (deltaT ** 3) * aceleracao_medida) + (vy_kmenos1 * (deltaT ** 2))) * np.cos(alpha)],
+                     [deltaT * np.cos(alpha), (-1)*(aceleracao_medida * deltaT * np.sin(alpha))],
+                     [deltaT * np.sin(alpha), (aceleracao_medida * deltaT * np.cos(alpha))],
+                     [0, deltaT]])
+    
+    Q = np.matrix([[1, 0],
+                   [0, 1]])
+    
+    P_predito = F_p * P * F_p.T + F_u * Q * F_u.T
+
+    Sx, Sy = 1000, 1000
+    hDF = determinarDF(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    hDR = determinarDR(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    hDL = determinarDL(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    funcaoH = np.matrix([hDF, hDR, hDL])
+    Vk = distancias - funcaoH
+    H = determinarMatrizH(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    Rk = np.matrix([[1, 0, 0, 0, 0],
+                   [0, 1, 0, 0, 0],
+                   [0, 0, 1, 0, 0],
+                   [0, 0, 0, 1, 0],
+                   [0, 0, 0, 0, 1]])
+    Sk = H * P_predito * H.T + Rk
+    Kk = P_predito * H.T * Sk.I
+    posicao_atual = posicao_predita + Kk * Vk
+    P_atual = P_predito + Kk * Sk * Kk.T
+    return posicao_atual, P_atual
+P = np.matrix([[1, 0, 0, 0, 0], [0, 1, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 1, 0], [0, 0, 0, 0, 1]])
+filtroDeKalman([0, 0, 1, 1, 90], 100, [0.1, 0.3], P, [10, 10, 10])
+
+# dF (x, y, theta) = {
+#     * 0 <= theta < pi/2:      |Yp - Sy| / |cos(theta)|
+#     * pi/2 <= theta < pi:     |Xp - Sx| / |sin(theta)|
+#     * pi <= theta < 3*pi/2:   Yp / |cos(theta)|
+#     * 3*pi/2 <= theta < 2*pi: Xp / |sin(theta)|  
+# }
+
+# dR (x, y, theta) = {
+#     * 0 <= theta < pi/2:      |Sx - Xp| / |cos(theta)
+#     * pi/2 <= theta < pi:     Yp / |sin(theta)|
+#     * pi <= theta < 3*pi/2:   Xp / |cos(theta)|
+#     * 3*pi/2 <= theta < 2*pi: |Sy - Yp| / |sin(theta)| 
+# }
+
+# dL (x, y, theta) = {
+#     * 0 <= theta < pi/2:      Xp / |cos(theta)
+#     * pi/2 <= theta < pi:     |Sy - Yp| / |sin(theta)|
+#     * pi <= theta < 3*pi/2:   |Sx - Xp| / |cos(theta)|
+#     * 3*pi/2 <= theta < 2*pi: Yp / |sin(theta)| 
+# }
+def filtroDeKalman(posicao_anterior, deltaT, u_k, P, distancias_lidas):
+    posicao_anterior = np.matrix(posicao_anterior).T
+    distancias = np.matrix(distancias_lidas)
+    x_kmenos1, y_kmenos1, vx_kmenos1, vy_kmenos1, theta_kmenos1 = posicao_anterior[0], posicao_anterior[1], posicao_anterior[2], posicao_anterior[3], posicao_anterior[4] 
+    aceleracao_medida, velocidade_angular = u_k[0], u_k[1]
+    alpha = theta_kmenos1 + (deltaT*velocidade_angular) 
+    deltaX = (1/2 * (deltaT ** 2) * aceleracao_medida  + vx_kmenos1*deltaT) * np.cos(alpha)
+    deltaY = (1/2 * (deltaT ** 2) * aceleracao_medida + vy_kmenos1*deltaT) * np.sin(alpha)
+    deltaVx = aceleracao_medida * deltaT * np.cos(alpha)
+    deltaVy = aceleracao_medida * deltaT * np.sin(alpha)
+    deltaTheta = deltaT * velocidade_angular
+    posicao_predita = posicao_anterior + np.matrix([[deltaX],
+                                                    [deltaY],
+                                                    [deltaVx],
+                                                    [deltaVy],
+                                                    [deltaTheta]])
+    F_p = np.matrix([[1, 0, deltaT * np.cos(alpha), 0, ((-1/2 * (deltaT ** 2) * aceleracao_medida - vx_kmenos1 * deltaT) * np.sin(alpha))],
+                     [0, 1, 0, deltaT * np.sin(alpha), ((1/2 * (deltaT ** 2) * aceleracao_medida + vy_kmenos1 * deltaT) * np.cos(alpha))],
+                     [0, 0, 1, 0, (-1)*(aceleracao_medida * deltaT * np.sin(alpha))],
+                     [0, 0, 0, 1, (aceleracao_medida * deltaT * np.cos(alpha))],
+                     [0, 0, 0, 0, 1]])
+    
+    F_u = np.matrix([[1/2 * (deltaT ** 2) * np.cos(alpha), 
+                        ((-1/2 * (deltaT ** 3) * aceleracao_medida) - (vx_kmenos1 * (deltaT ** 2))) * np.sin(alpha)],
+                     [1/2 * (deltaT ** 2) * np.sin(alpha),
+                         ((1/2 * (deltaT ** 3) * aceleracao_medida) + (vy_kmenos1 * (deltaT ** 2))) * np.cos(alpha)],
+                     [deltaT * np.cos(alpha), (-1)*(aceleracao_medida * deltaT * np.sin(alpha))],
+                     [deltaT * np.sin(alpha), (aceleracao_medida * deltaT * np.cos(alpha))],
+                     [0, deltaT]])
+    
+    Q = np.matrix([[1, 0],
+                   [0, 1]])
+    
+    P_predito = F_p * P * F_p.T + F_u * Q * F_u.T
+
+    Sx, Sy = 1000, 1000
+    hDF = determinarDF(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    hDR = determinarDR(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    hDL = determinarDL(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    funcaoH = np.matrix([hDF, hDR, hDL])
+    Vk = distancias - funcaoH
+    H = determinarMatrizH(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    print(H)
+    Rk = np.matrix([[1, 0, 0, 0, 0],
+                   [0, 1, 0, 0, 0],
+                   [0, 0, 1, 0, 0],
+                   [0, 0, 0, 1, 0],
+                   [0, 0, 0, 0, 1]])
+    Sk = H * P_predito * H.T + Rk
+    Kk = P_predito * H.T * Sk.I
+    posicao_atual = posicao_predita + Kk * Vk
+    P_atual = P_predito + Kk * Sk * Kk.T
+    return posicao_atual, P_atual
+P = np.matrix([[1, 0, 0, 0, 0], [0, 1, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 1, 0], [0, 0, 0, 0, 1]])
+filtroDeKalman([0, 0, 1, 1, 90], 100, [0.1, 0.3], P, [10, 10, 10])
+
+# dF (x, y, theta) = {
+#     * 0 <= theta < pi/2:      |Yp - Sy| / |cos(theta)|
+#     * pi/2 <= theta < pi:     |Xp - Sx| / |sin(theta)|
+#     * pi <= theta < 3*pi/2:   Yp / |cos(theta)|
+#     * 3*pi/2 <= theta < 2*pi: Xp / |sin(theta)|  
+# }
+
+# dR (x, y, theta) = {
+#     * 0 <= theta < pi/2:      |Sx - Xp| / |cos(theta)
+#     * pi/2 <= theta < pi:     Yp / |sin(theta)|
+#     * pi <= theta < 3*pi/2:   Xp / |cos(theta)|
+#     * 3*pi/2 <= theta < 2*pi: |Sy - Yp| / |sin(theta)| 
+# }
+
+# dL (x, y, theta) = {
+#     * 0 <= theta < pi/2:      Xp / |cos(theta)
+#     * pi/2 <= theta < pi:     |Sy - Yp| / |sin(theta)|
+#     * pi <= theta < 3*pi/2:   |Sx - Xp| / |cos(theta)|
+#     * 3*pi/2 <= theta < 2*pi: Yp / |sin(theta)| 
+# }
+def filtroDeKalman(posicao_anterior, deltaT, u_k, P, distancias_lidas):
+    posicao_anterior = np.matrix(posicao_anterior).T
+    distancias = np.matrix(distancias_lidas)
+    x_kmenos1, y_kmenos1, vx_kmenos1, vy_kmenos1, theta_kmenos1 = posicao_anterior[0], posicao_anterior[1], posicao_anterior[2], posicao_anterior[3], posicao_anterior[4] 
+    aceleracao_medida, velocidade_angular = u_k[0], u_k[1]
+    alpha = theta_kmenos1 + (deltaT*velocidade_angular) 
+    deltaX = (1/2 * (deltaT ** 2) * aceleracao_medida  + vx_kmenos1*deltaT) * np.cos(alpha)
+    deltaY = (1/2 * (deltaT ** 2) * aceleracao_medida + vy_kmenos1*deltaT) * np.sin(alpha)
+    deltaVx = aceleracao_medida * deltaT * np.cos(alpha)
+    deltaVy = aceleracao_medida * deltaT * np.sin(alpha)
+    deltaTheta = deltaT * velocidade_angular
+    posicao_predita = posicao_anterior + np.matrix([[deltaX],
+                                                    [deltaY],
+                                                    [deltaVx],
+                                                    [deltaVy],
+                                                    [deltaTheta]])
+    F_p = np.matrix([[1, 0, deltaT * np.cos(alpha), 0, ((-1/2 * (deltaT ** 2) * aceleracao_medida - vx_kmenos1 * deltaT) * np.sin(alpha))],
+                     [0, 1, 0, deltaT * np.sin(alpha), ((1/2 * (deltaT ** 2) * aceleracao_medida + vy_kmenos1 * deltaT) * np.cos(alpha))],
+                     [0, 0, 1, 0, (-1)*(aceleracao_medida * deltaT * np.sin(alpha))],
+                     [0, 0, 0, 1, (aceleracao_medida * deltaT * np.cos(alpha))],
+                     [0, 0, 0, 0, 1]])
+    
+    F_u = np.matrix([[1/2 * (deltaT ** 2) * np.cos(alpha), 
+                        ((-1/2 * (deltaT ** 3) * aceleracao_medida) - (vx_kmenos1 * (deltaT ** 2))) * np.sin(alpha)],
+                     [1/2 * (deltaT ** 2) * np.sin(alpha),
+                         ((1/2 * (deltaT ** 3) * aceleracao_medida) + (vy_kmenos1 * (deltaT ** 2))) * np.cos(alpha)],
+                     [deltaT * np.cos(alpha), (-1)*(aceleracao_medida * deltaT * np.sin(alpha))],
+                     [deltaT * np.sin(alpha), (aceleracao_medida * deltaT * np.cos(alpha))],
+                     [0, deltaT]])
+    
+    Q = np.matrix([[1, 0],
+                   [0, 1]])
+    
+    P_predito = F_p * P * F_p.T + F_u * Q * F_u.T
+
+    Sx, Sy = 1000, 1000
+    hDF = determinarDF(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    hDR = determinarDR(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    hDL = determinarDL(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    funcaoH = np.matrix([hDF, hDR, hDL])
+    Vk = distancias - funcaoH
+    H = determinarMatrizH(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    H = np.matrix(H)
+    Rk = np.matrix([[1, 0, 0, 0, 0],
+                   [0, 1, 0, 0, 0],
+                   [0, 0, 1, 0, 0],
+                   [0, 0, 0, 1, 0],
+                   [0, 0, 0, 0, 1]])
+    Sk = H * P_predito * H.T + Rk
+    Kk = P_predito * H.T * Sk.I
+    posicao_atual = posicao_predita + Kk * Vk
+    P_atual = P_predito + Kk * Sk * Kk.T
+    return posicao_atual, P_atual
+P = np.matrix([[1, 0, 0, 0, 0], [0, 1, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 1, 0], [0, 0, 0, 0, 1]])
+filtroDeKalman([0, 0, 1, 1, 90], 100, [0.1, 0.3], P, [10, 10, 10])
+
+# dF (x, y, theta) = {
+#     * 0 <= theta < pi/2:      |Yp - Sy| / |cos(theta)|
+#     * pi/2 <= theta < pi:     |Xp - Sx| / |sin(theta)|
+#     * pi <= theta < 3*pi/2:   Yp / |cos(theta)|
+#     * 3*pi/2 <= theta < 2*pi: Xp / |sin(theta)|  
+# }
+
+# dR (x, y, theta) = {
+#     * 0 <= theta < pi/2:      |Sx - Xp| / |cos(theta)
+#     * pi/2 <= theta < pi:     Yp / |sin(theta)|
+#     * pi <= theta < 3*pi/2:   Xp / |cos(theta)|
+#     * 3*pi/2 <= theta < 2*pi: |Sy - Yp| / |sin(theta)| 
+# }
+
+# dL (x, y, theta) = {
+#     * 0 <= theta < pi/2:      Xp / |cos(theta)
+#     * pi/2 <= theta < pi:     |Sy - Yp| / |sin(theta)|
+#     * pi <= theta < 3*pi/2:   |Sx - Xp| / |cos(theta)|
+#     * 3*pi/2 <= theta < 2*pi: Yp / |sin(theta)| 
+# }
+def determinarDF(x, y, theta, Sx, Sy):
+    dF = 0
+    if theta >= 0 and theta < np.pi / 2:
+        dF = (Sy - y) / np.abs(np.cos(theta)) 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        dF = (Sx - x) / np.abs(np.sin(theta))
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        dF = y / np.abs(np.cos(theta)) 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        dF = x / np.abs(np.sin(theta))        
+    return dF
+
+def determinarDR(x, y, theta, Sx, Sy):
+    dR = 0
+    if theta >= 0 and theta < np.pi / 2:
+        dR = (Sx - x) / np.abs(np.cos(theta)) 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        dR = (Sx - x) / np.abs(np.sin(theta))
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        dR = x / np.abs(np.cos(theta)) 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        dR = (Sy - y) / np.abs(np.sin(theta))        
+    return dR
+
+def determinarDL(x, y, theta, Sx, Sy):
+    dL = 0
+    if theta >= 0 and theta < np.pi / 2:
+        dL = x / np.abs(np.cos(theta)) 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        dL = (Sy - y) / np.abs(np.sin(theta))
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        dL = (Sx - x) / np.abs(np.cos(theta)) 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        dL = y / np.abs(np.sin(theta))        
+    return dL
+
+    
+def determinarMatrizH(x, y, theta, Sx, Sy):
+    if theta >= 0 and theta < np.pi / 2:
+        H = [[0, -1/np.abs(np.cos(theta)), 0, 0, ((Sy - y)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [-1/np.abs(np.cos(theta)), 0, 0, 0, ((Sx - x)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [-1/np.abs(np.cos(theta)), 0, 0, 0, ((x)*np.tan(theta)) / np.abs(np.cos(theta))]
+                     ]
+        return H 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        H = [[-1/np.abs(np.sin(theta)), 0, 0, 0, (-(Sx - x)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, 1/np.abs(np.sin(theta)),  0, 0, (-(y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, -1/np.abs(np.sin(theta)), 0, 0, (-(Sy - y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))]
+                     ])
+        return H
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        H = [[0, 1/np.abs(np.cos(theta)), 0, 0, ((y)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [1/np.abs(np.cos(theta)), 0, 0, 0, ((x)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [-1/np.abs(np.cos(theta)), 0, 0, 0, ((Sx - x)*np.tan(theta)) / np.abs(np.cos(theta))]
+                     ]
+        return H 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        H = [[1/np.abs(np.sin(theta)), 0,   0, 0, (-(x)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, -1/np.abs(np.sin(theta)),  0, 0, (-(Sy - y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, -1/np.abs(np.sin(theta)), 0, 0, (-(y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))]
+                     ]
+        return H
+import numpy as np
+def determinarDF(x, y, theta, Sx, Sy):
+    dF = 0
+    if theta >= 0 and theta < np.pi / 2:
+        dF = (Sy - y) / np.abs(np.cos(theta)) 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        dF = (Sx - x) / np.abs(np.sin(theta))
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        dF = y / np.abs(np.cos(theta)) 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        dF = x / np.abs(np.sin(theta))        
+    return dF
+
+def determinarDR(x, y, theta, Sx, Sy):
+    dR = 0
+    if theta >= 0 and theta < np.pi / 2:
+        dR = (Sx - x) / np.abs(np.cos(theta)) 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        dR = (Sx - x) / np.abs(np.sin(theta))
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        dR = x / np.abs(np.cos(theta)) 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        dR = (Sy - y) / np.abs(np.sin(theta))        
+    return dR
+
+def determinarDL(x, y, theta, Sx, Sy):
+    dL = 0
+    if theta >= 0 and theta < np.pi / 2:
+        dL = x / np.abs(np.cos(theta)) 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        dL = (Sy - y) / np.abs(np.sin(theta))
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        dL = (Sx - x) / np.abs(np.cos(theta)) 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        dL = y / np.abs(np.sin(theta))        
+    return dL
+
+    
+def determinarMatrizH(x, y, theta, Sx, Sy):
+    if theta >= 0 and theta < np.pi / 2:
+        H = [[0, -1/np.abs(np.cos(theta)), 0, 0, ((Sy - y)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [-1/np.abs(np.cos(theta)), 0, 0, 0, ((Sx - x)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [-1/np.abs(np.cos(theta)), 0, 0, 0, ((x)*np.tan(theta)) / np.abs(np.cos(theta))]
+                     ]
+        return H 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        H = [[-1/np.abs(np.sin(theta)), 0, 0, 0, (-(Sx - x)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, 1/np.abs(np.sin(theta)),  0, 0, (-(y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, -1/np.abs(np.sin(theta)), 0, 0, (-(Sy - y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))]
+                     ])
+        return H
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        H = [[0, 1/np.abs(np.cos(theta)), 0, 0, ((y)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [1/np.abs(np.cos(theta)), 0, 0, 0, ((x)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [-1/np.abs(np.cos(theta)), 0, 0, 0, ((Sx - x)*np.tan(theta)) / np.abs(np.cos(theta))]
+                     ]
+        return H 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        H = [[1/np.abs(np.sin(theta)), 0,   0, 0, (-(x)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, -1/np.abs(np.sin(theta)),  0, 0, (-(Sy - y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, -1/np.abs(np.sin(theta)), 0, 0, (-(y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))]
+                     ]
+        return H
+import numpy as np
+def determinarDF(x, y, theta, Sx, Sy):
+    dF = 0
+    if theta >= 0 and theta < np.pi / 2:
+        dF = (Sy - y) / np.abs(np.cos(theta)) 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        dF = (Sx - x) / np.abs(np.sin(theta))
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        dF = y / np.abs(np.cos(theta)) 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        dF = x / np.abs(np.sin(theta))        
+    return dF
+
+def determinarDR(x, y, theta, Sx, Sy):
+    dR = 0
+    if theta >= 0 and theta < np.pi / 2:
+        dR = (Sx - x) / np.abs(np.cos(theta)) 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        dR = (Sx - x) / np.abs(np.sin(theta))
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        dR = x / np.abs(np.cos(theta)) 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        dR = (Sy - y) / np.abs(np.sin(theta))        
+    return dR
+
+def determinarDL(x, y, theta, Sx, Sy):
+    dL = 0
+    if theta >= 0 and theta < np.pi / 2:
+        dL = x / np.abs(np.cos(theta)) 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        dL = (Sy - y) / np.abs(np.sin(theta))
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        dL = (Sx - x) / np.abs(np.cos(theta)) 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        dL = y / np.abs(np.sin(theta))        
+    return dL
+
+    
+def determinarMatrizH(x, y, theta, Sx, Sy):
+    if theta >= 0 and theta < np.pi / 2:
+        H = [[0, -1/np.abs(np.cos(theta)), 0, 0, ((Sy - y)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [-1/np.abs(np.cos(theta)), 0, 0, 0, ((Sx - x)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [-1/np.abs(np.cos(theta)), 0, 0, 0, ((x)*np.tan(theta)) / np.abs(np.cos(theta))]
+                     ]
+        return H 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        H = [[-1/np.abs(np.sin(theta)), 0, 0, 0, (-(Sx - x)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, 1/np.abs(np.sin(theta)),  0, 0, (-(y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, -1/np.abs(np.sin(theta)), 0, 0, (-(Sy - y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))]
+                     ]
+        return H
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        H = [[0, 1/np.abs(np.cos(theta)), 0, 0, ((y)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [1/np.abs(np.cos(theta)), 0, 0, 0, ((x)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [-1/np.abs(np.cos(theta)), 0, 0, 0, ((Sx - x)*np.tan(theta)) / np.abs(np.cos(theta))]
+                     ]
+        return H 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        H = [[1/np.abs(np.sin(theta)), 0,   0, 0, (-(x)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, -1/np.abs(np.sin(theta)),  0, 0, (-(Sy - y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, -1/np.abs(np.sin(theta)), 0, 0, (-(y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))]
+                     ]
+        return H
+def filtroDeKalman(posicao_anterior, deltaT, u_k, P, distancias_lidas):
+    posicao_anterior = np.matrix(posicao_anterior).T
+    distancias = np.matrix(distancias_lidas)
+    x_kmenos1, y_kmenos1, vx_kmenos1, vy_kmenos1, theta_kmenos1 = posicao_anterior[0], posicao_anterior[1], posicao_anterior[2], posicao_anterior[3], posicao_anterior[4] 
+    aceleracao_medida, velocidade_angular = u_k[0], u_k[1]
+    alpha = theta_kmenos1 + (deltaT*velocidade_angular) 
+    deltaX = (1/2 * (deltaT ** 2) * aceleracao_medida  + vx_kmenos1*deltaT) * np.cos(alpha)
+    deltaY = (1/2 * (deltaT ** 2) * aceleracao_medida + vy_kmenos1*deltaT) * np.sin(alpha)
+    deltaVx = aceleracao_medida * deltaT * np.cos(alpha)
+    deltaVy = aceleracao_medida * deltaT * np.sin(alpha)
+    deltaTheta = deltaT * velocidade_angular
+    posicao_predita = posicao_anterior + np.matrix([[deltaX],
+                                                    [deltaY],
+                                                    [deltaVx],
+                                                    [deltaVy],
+                                                    [deltaTheta]])
+    F_p = np.matrix([[1, 0, deltaT * np.cos(alpha), 0, ((-1/2 * (deltaT ** 2) * aceleracao_medida - vx_kmenos1 * deltaT) * np.sin(alpha))],
+                     [0, 1, 0, deltaT * np.sin(alpha), ((1/2 * (deltaT ** 2) * aceleracao_medida + vy_kmenos1 * deltaT) * np.cos(alpha))],
+                     [0, 0, 1, 0, (-1)*(aceleracao_medida * deltaT * np.sin(alpha))],
+                     [0, 0, 0, 1, (aceleracao_medida * deltaT * np.cos(alpha))],
+                     [0, 0, 0, 0, 1]])
+    
+    F_u = np.matrix([[1/2 * (deltaT ** 2) * np.cos(alpha), 
+                        ((-1/2 * (deltaT ** 3) * aceleracao_medida) - (vx_kmenos1 * (deltaT ** 2))) * np.sin(alpha)],
+                     [1/2 * (deltaT ** 2) * np.sin(alpha),
+                         ((1/2 * (deltaT ** 3) * aceleracao_medida) + (vy_kmenos1 * (deltaT ** 2))) * np.cos(alpha)],
+                     [deltaT * np.cos(alpha), (-1)*(aceleracao_medida * deltaT * np.sin(alpha))],
+                     [deltaT * np.sin(alpha), (aceleracao_medida * deltaT * np.cos(alpha))],
+                     [0, deltaT]])
+    
+    Q = np.matrix([[1, 0],
+                   [0, 1]])
+    
+    P_predito = F_p * P * F_p.T + F_u * Q * F_u.T
+
+    Sx, Sy = 1000, 1000
+    hDF = determinarDF(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    hDR = determinarDR(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    hDL = determinarDL(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    funcaoH = np.matrix([hDF, hDR, hDL])
+    Vk = distancias - funcaoH
+    H = determinarMatrizH(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    Rk = np.matrix([[1, 0, 0, 0, 0],
+                   [0, 1, 0, 0, 0],
+                   [0, 0, 1, 0, 0],
+                   [0, 0, 0, 1, 0],
+                   [0, 0, 0, 0, 1]])
+    Sk = H * P_predito * H.T + Rk
+    Kk = P_predito * H.T * Sk.I
+    posicao_atual = posicao_predita + Kk * Vk
+    P_atual = P_predito + Kk * Sk * Kk.T
+    return posicao_atual, P_atual
+P = np.matrix([[1, 0, 0, 0, 0], [0, 1, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 1, 0], [0, 0, 0, 0, 1]])
+filtroDeKalman([0, 0, 1, 1, 90], 100, [0.1, 0.3], P, [10, 10, 10])
+
+# dF (x, y, theta) = {
+#     * 0 <= theta < pi/2:      |Yp - Sy| / |cos(theta)|
+#     * pi/2 <= theta < pi:     |Xp - Sx| / |sin(theta)|
+#     * pi <= theta < 3*pi/2:   Yp / |cos(theta)|
+#     * 3*pi/2 <= theta < 2*pi: Xp / |sin(theta)|  
+# }
+
+# dR (x, y, theta) = {
+#     * 0 <= theta < pi/2:      |Sx - Xp| / |cos(theta)
+#     * pi/2 <= theta < pi:     Yp / |sin(theta)|
+#     * pi <= theta < 3*pi/2:   Xp / |cos(theta)|
+#     * 3*pi/2 <= theta < 2*pi: |Sy - Yp| / |sin(theta)| 
+# }
+
+# dL (x, y, theta) = {
+#     * 0 <= theta < pi/2:      Xp / |cos(theta)
+#     * pi/2 <= theta < pi:     |Sy - Yp| / |sin(theta)|
+#     * pi <= theta < 3*pi/2:   |Sx - Xp| / |cos(theta)|
+#     * 3*pi/2 <= theta < 2*pi: Yp / |sin(theta)| 
+# }
+import numpy as np
+def determinarDF(x, y, theta, Sx, Sy):
+    dF = 0
+    if theta >= 0 and theta < np.pi / 2:
+        dF = (Sy - y) / np.abs(np.cos(theta)) 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        dF = (Sx - x) / np.abs(np.sin(theta))
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        dF = y / np.abs(np.cos(theta)) 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        dF = x / np.abs(np.sin(theta))        
+    return dF
+
+def determinarDR(x, y, theta, Sx, Sy):
+    dR = 0
+    if theta >= 0 and theta < np.pi / 2:
+        dR = (Sx - x) / np.abs(np.cos(theta)) 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        dR = (Sx - x) / np.abs(np.sin(theta))
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        dR = x / np.abs(np.cos(theta)) 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        dR = (Sy - y) / np.abs(np.sin(theta))        
+    return dR
+
+def determinarDL(x, y, theta, Sx, Sy):
+    dL = 0
+    if theta >= 0 and theta < np.pi / 2:
+        dL = x / np.abs(np.cos(theta)) 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        dL = (Sy - y) / np.abs(np.sin(theta))
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        dL = (Sx - x) / np.abs(np.cos(theta)) 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        dL = y / np.abs(np.sin(theta))        
+    return dL
+
+    
+def determinarMatrizH(x, y, theta, Sx, Sy):
+    if theta >= 0 and theta < np.pi / 2:
+        H = [[0, -1/np.abs(np.cos(theta)), 0, 0, ((Sy - y)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [-1/np.abs(np.cos(theta)), 0, 0, 0, ((Sx - x)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [-1/np.abs(np.cos(theta)), 0, 0, 0, ((x)*np.tan(theta)) / np.abs(np.cos(theta))]
+                     ]
+        return H 
+    elif theta >= np.pi / 2 and theta < np.pi:
+        H = [[-1/np.abs(np.sin(theta)), 0, 0, 0, (-(Sx - x)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, 1/np.abs(np.sin(theta)),  0, 0, (-(y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, -1/np.abs(np.sin(theta)), 0, 0, (-(Sy - y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))]
+                     ]
+        return H
+    elif theta >= np.pi and theta < 3*np.pi/2:
+        H = [[0, 1/np.abs(np.cos(theta)), 0, 0, ((y)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [1/np.abs(np.cos(theta)), 0, 0, 0, ((x)*np.tan(theta)) / np.abs(np.cos(theta))],
+                       [-1/np.abs(np.cos(theta)), 0, 0, 0, ((Sx - x)*np.tan(theta)) / np.abs(np.cos(theta))]
+                     ]
+        return H 
+    elif theta >= 3 * np.pi / 2 and theta < 2 * np.pi:
+        H = [[1/np.abs(np.sin(theta)), 0,   0, 0, (-(x)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, -1/np.abs(np.sin(theta)),  0, 0, (-(Sy - y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))],
+                       [0, -1/np.abs(np.sin(theta)), 0, 0, (-(y)*np.cos(theta)) / (np.sin(theta) * np.abs(np.sin(theta)))]
+                     ]
+        return H
+def filtroDeKalman(posicao_anterior, deltaT, u_k, P, distancias_lidas):
+    posicao_anterior = np.matrix(posicao_anterior).T
+    distancias = np.matrix(distancias_lidas)
+    x_kmenos1, y_kmenos1, vx_kmenos1, vy_kmenos1, theta_kmenos1 = posicao_anterior[0], posicao_anterior[1], posicao_anterior[2], posicao_anterior[3], posicao_anterior[4] 
+    aceleracao_medida, velocidade_angular = u_k[0], u_k[1]
+    alpha = theta_kmenos1 + (deltaT*velocidade_angular) 
+    deltaX = (1/2 * (deltaT ** 2) * aceleracao_medida  + vx_kmenos1*deltaT) * np.cos(alpha)
+    deltaY = (1/2 * (deltaT ** 2) * aceleracao_medida + vy_kmenos1*deltaT) * np.sin(alpha)
+    deltaVx = aceleracao_medida * deltaT * np.cos(alpha)
+    deltaVy = aceleracao_medida * deltaT * np.sin(alpha)
+    deltaTheta = deltaT * velocidade_angular
+    posicao_predita = posicao_anterior + np.matrix([[deltaX],
+                                                    [deltaY],
+                                                    [deltaVx],
+                                                    [deltaVy],
+                                                    [deltaTheta]])
+    F_p = np.matrix([[1, 0, deltaT * np.cos(alpha), 0, ((-1/2 * (deltaT ** 2) * aceleracao_medida - vx_kmenos1 * deltaT) * np.sin(alpha))],
+                     [0, 1, 0, deltaT * np.sin(alpha), ((1/2 * (deltaT ** 2) * aceleracao_medida + vy_kmenos1 * deltaT) * np.cos(alpha))],
+                     [0, 0, 1, 0, (-1)*(aceleracao_medida * deltaT * np.sin(alpha))],
+                     [0, 0, 0, 1, (aceleracao_medida * deltaT * np.cos(alpha))],
+                     [0, 0, 0, 0, 1]])
+    
+    F_u = np.matrix([[1/2 * (deltaT ** 2) * np.cos(alpha), 
+                        ((-1/2 * (deltaT ** 3) * aceleracao_medida) - (vx_kmenos1 * (deltaT ** 2))) * np.sin(alpha)],
+                     [1/2 * (deltaT ** 2) * np.sin(alpha),
+                         ((1/2 * (deltaT ** 3) * aceleracao_medida) + (vy_kmenos1 * (deltaT ** 2))) * np.cos(alpha)],
+                     [deltaT * np.cos(alpha), (-1)*(aceleracao_medida * deltaT * np.sin(alpha))],
+                     [deltaT * np.sin(alpha), (aceleracao_medida * deltaT * np.cos(alpha))],
+                     [0, deltaT]])
+    
+    Q = np.matrix([[1, 0],
+                   [0, 1]])
+    
+    P_predito = F_p * P * F_p.T + F_u * Q * F_u.T
+
+    Sx, Sy = 1000, 1000
+    hDF = determinarDF(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    hDR = determinarDR(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    hDL = determinarDL(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    funcaoH = np.matrix([hDF, hDR, hDL])
+    Vk = distancias - funcaoH
+    H = np.matrix(determinarMatrizH(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy))
+    Rk = np.matrix([[1, 0, 0, 0, 0],
+                   [0, 1, 0, 0, 0],
+                   [0, 0, 1, 0, 0],
+                   [0, 0, 0, 1, 0],
+                   [0, 0, 0, 0, 1]])
+    Sk = H * P_predito * H.T + Rk
+    Kk = P_predito * H.T * Sk.I
+    posicao_atual = posicao_predita + Kk * Vk
+    P_atual = P_predito + Kk * Sk * Kk.T
+    return posicao_atual, P_atual
+P = np.matrix([[1, 0, 0, 0, 0], [0, 1, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 1, 0], [0, 0, 0, 0, 1]])
+filtroDeKalman([0, 0, 1, 1, 90], 100, [0.1, 0.3], P, [10, 10, 10])
+
+# dF (x, y, theta) = {
+#     * 0 <= theta < pi/2:      |Yp - Sy| / |cos(theta)|
+#     * pi/2 <= theta < pi:     |Xp - Sx| / |sin(theta)|
+#     * pi <= theta < 3*pi/2:   Yp / |cos(theta)|
+#     * 3*pi/2 <= theta < 2*pi: Xp / |sin(theta)|  
+# }
+
+# dR (x, y, theta) = {
+#     * 0 <= theta < pi/2:      |Sx - Xp| / |cos(theta)
+#     * pi/2 <= theta < pi:     Yp / |sin(theta)|
+#     * pi <= theta < 3*pi/2:   Xp / |cos(theta)|
+#     * 3*pi/2 <= theta < 2*pi: |Sy - Yp| / |sin(theta)| 
+# }
+
+# dL (x, y, theta) = {
+#     * 0 <= theta < pi/2:      Xp / |cos(theta)
+#     * pi/2 <= theta < pi:     |Sy - Yp| / |sin(theta)|
+#     * pi <= theta < 3*pi/2:   |Sx - Xp| / |cos(theta)|
+#     * 3*pi/2 <= theta < 2*pi: Yp / |sin(theta)| 
+# }
+import numpy as np
+_ih[1]
+import numpy as np
+_ih[-5:]
+import numpy as np
+def filtroDeKalman(posicao_anterior, deltaT, u_k, P, distancias_lidas):
+    posicao_anterior = np.matrix(posicao_anterior).T
+    distancias = np.matrix(distancias_lidas)
+    x_kmenos1, y_kmenos1, vx_kmenos1, vy_kmenos1, theta_kmenos1 = posicao_anterior[0], posicao_anterior[1], posicao_anterior[2], posicao_anterior[3], posicao_anterior[4] 
+    aceleracao_medida, velocidade_angular = u_k[0], u_k[1]
+    alpha = theta_kmenos1 + (deltaT*velocidade_angular) 
+    deltaX = (1/2 * (deltaT ** 2) * aceleracao_medida  + vx_kmenos1*deltaT) * np.cos(alpha)
+    deltaY = (1/2 * (deltaT ** 2) * aceleracao_medida + vy_kmenos1*deltaT) * np.sin(alpha)
+    deltaVx = aceleracao_medida * deltaT * np.cos(alpha)
+    deltaVy = aceleracao_medida * deltaT * np.sin(alpha)
+    deltaTheta = deltaT * velocidade_angular
+    posicao_predita = posicao_anterior + np.matrix([[deltaX],
+                                                    [deltaY],
+                                                    [deltaVx],
+                                                    [deltaVy],
+                                                    [deltaTheta]])
+    F_p = np.matrix([[1, 0, deltaT * np.cos(alpha), 0, ((-1/2 * (deltaT ** 2) * aceleracao_medida - vx_kmenos1 * deltaT) * np.sin(alpha))],
+                     [0, 1, 0, deltaT * np.sin(alpha), ((1/2 * (deltaT ** 2) * aceleracao_medida + vy_kmenos1 * deltaT) * np.cos(alpha))],
+                     [0, 0, 1, 0, (-1)*(aceleracao_medida * deltaT * np.sin(alpha))],
+                     [0, 0, 0, 1, (aceleracao_medida * deltaT * np.cos(alpha))],
+                     [0, 0, 0, 0, 1]])
+    
+    F_u = np.matrix([[1/2 * (deltaT ** 2) * np.cos(alpha), 
+                        ((-1/2 * (deltaT ** 3) * aceleracao_medida) - (vx_kmenos1 * (deltaT ** 2))) * np.sin(alpha)],
+                     [1/2 * (deltaT ** 2) * np.sin(alpha),
+                         ((1/2 * (deltaT ** 3) * aceleracao_medida) + (vy_kmenos1 * (deltaT ** 2))) * np.cos(alpha)],
+                     [deltaT * np.cos(alpha), (-1)*(aceleracao_medida * deltaT * np.sin(alpha))],
+                     [deltaT * np.sin(alpha), (aceleracao_medida * deltaT * np.cos(alpha))],
+                     [0, deltaT]])
+    
+    Q = np.matrix([[1, 0],
+                   [0, 1]])
+    
+    P_predito = F_p * P * F_p.T + F_u * Q * F_u.T
+
+    Sx, Sy = 1000, 1000
+    hDF = determinarDF(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    hDR = determinarDR(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    hDL = determinarDL(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    funcaoH = np.matrix([hDF, hDR, hDL])
+    Vk = distancias - funcaoH
+    H = determinarMatrizH(posicao_predita[0], posicao_predita[1], posicao_predita[4], Sx, Sy)
+    H
+    Rk = np.matrix([[1, 0, 0, 0, 0],
+                   [0, 1, 0, 0, 0],
+                   [0, 0, 1, 0, 0],
+                   [0, 0, 0, 1, 0],
+                   [0, 0, 0, 0, 1]])
+    Sk = H * P_predito * H.T + Rk
+    Kk = P_predito * H.T * Sk.I
+    posicao_atual = posicao_predita + Kk * Vk
+    P_atual = P_predito + Kk * Sk * Kk.T
+    return posicao_atual, P_atual
+P = np.matrix([[1, 0, 0, 0, 0], [0, 1, 0, 0, 0], [0, 0, 1, 0, 0], [0, 0, 0, 1, 0], [0, 0, 0, 0, 1]])
+filtroDeKalman([0, 0, 1, 1, 90], 100, [0.1, 0.3], P, [10, 10, 10])
+
+# dF (x, y, theta) = {
+#     * 0 <= theta < pi/2:      |Yp - Sy| / |cos(theta)|
+#     * pi/2 <= theta < pi:     |Xp - Sx| / |sin(theta)|
+#     * pi <= theta < 3*pi/2:   Yp / |cos(theta)|
+#     * 3*pi/2 <= theta < 2*pi: Xp / |sin(theta)|  
+# }
+
+# dR (x, y, theta) = {
+#     * 0 <= theta < pi/2:      |Sx - Xp| / |cos(theta)
+#     * pi/2 <= theta < pi:     Yp / |sin(theta)|
+#     * pi <= theta < 3*pi/2:   Xp / |cos(theta)|
+#     * 3*pi/2 <= theta < 2*pi: |Sy - Yp| / |sin(theta)| 
+# }
+
+# dL (x, y, theta) = {
+#     * 0 <= theta < pi/2:      Xp / |cos(theta)
+#     * pi/2 <= theta < pi:     |Sy - Yp| / |sin(theta)|
+#     * pi <= theta < 3*pi/2:   |Sx - Xp| / |cos(theta)|
+#     * 3*pi/2 <= theta < 2*pi: Yp / |sin(theta)| 
+# }
+_ih[-5:]
+_ih[-5:]
+% history -f filename.txt
+_ih[-5:]
+%history -f filename.txt
